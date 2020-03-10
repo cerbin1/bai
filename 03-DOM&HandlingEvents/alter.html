@@ -1,27 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html ondblclick="changeBackground()"">
 	<head>
 		<title>Pink Floyd</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+		<meta charset=" UTF-8">
+</head>
+
+<body>
+	<h1 onclick="changeTitle()">Another Brick in the Wall</h1>
+	<h3 onclick="hideElement()">Pink Floyd</h3>
+	<p onclick="changeFontStyle()" oncopy="displayAlert()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
 		Hey! Teachers! Leave them kids alone<br>
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
-		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+
+	<p id="band" onclick="displayElement()" style="visibility: hidden;">Pink Floyd were an English rock band formed in
+		London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-	</body>
+
+	<img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg" alt="smth"
+		style="visibility: hidden;" />
+
+	<script>
+		const hideElement = () => document.getElementsByTagName("p")[1].style.visibility = "visible";
+		const changeFontStyle = () => document.getElementsByTagName("p")[0].style.fontStyle = "italic";
+		const changeTitle = () => document.getElementsByTagName("h1")[0].innerHTML = "Another Brick in the Wall Part 2";
+		const changeBackground = () => document.getElementsByTagName('html')[0].style.backgroundColor = "yellow";
+		const displayAlert = () => alert("Copyright");
+		const displayElement = () => document.getElementsByTagName("img")[0].style.visibility = "visible";
+	</script>
+</body>
+
 </html>
