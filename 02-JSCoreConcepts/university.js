@@ -5,22 +5,22 @@ class Students {
         this.names = names;
     }
 
-    startWith(letter){
-        return this.names.filter(name => name.charAt(0) == letter)
+    startWith(character) {
+        return new Students(this.names.filter(name => name.charAt(0) == character))
     }
 
     sort() {
-        return this.names.sort()
+        this.names.sort()
+        return this
     }
 
- getFirst(n) {
-        return this.names.map(letter => letter.substring(0,n))
-    }
     get() {
         return this.names
     }
 
-   
+    getFirst(count) {
+        return this.names.slice(0, count)
+    }
 }
 
 students = new Students(names);

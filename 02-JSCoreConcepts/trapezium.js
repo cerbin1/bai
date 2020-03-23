@@ -1,3 +1,5 @@
-const trapez = (a, b, h) => console.log(((a+b) * h)/2);
+const trapezeArea = (a, b, h) => {
+    return ((a + b) * h) / 2;
+};
 
-trapez(1,2,3)
+console.log("Trapez: "  + trapezeArea(1, 2, 3))

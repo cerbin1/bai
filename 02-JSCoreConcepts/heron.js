@@ -6,11 +6,11 @@ h = 7
 
 // Pole trókąta o bokach ..., ... oraz ... wynosi ... .
 
-let a = (h,b,c) => {
-    const p = (h+b+c)/2;
-    const pole = Math.sqrt(p * (p-h) * (p-b) * (p-c));
+let countTriangleArea = (h, b, c) => {
+    const p = (h + b + c) / 2;
+    const area = Math.sqrt(p * (p - h) * (p - b) * (p - c));
 
-    return `Pole trókąta o bokach ${h}, ${b} oraz ${c} wynosi ${pole}`;
+    return `Pole trókąta o bokach ${h}, ${b} oraz ${c} wynosi ${area}`;
 };
 
-console.log( a(b,c,h) );
+console.log(countTriangleArea(b, c, h));
