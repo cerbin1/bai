@@ -1,13 +1,13 @@
-const random = () => Math.floor(Math.random() * (20 - 5 + 1)) + 5;
-const arr = () => {
-  let arr =[]
+const getRandomNumber = () => Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+const randomNumbers = () => {
+  let numbers =[]
     for(let i = 0; i< 10; i++){
-       arr.push(random()) 
+      numbers.push(getRandomNumber()) 
     }
     
 
-    return arr;
+    return numbers;
 }
-const display = () => console.log(arr());
+const displayRandomNumbers = () => console.log(randomNumbers());
 
-display();
+displayRandomNumbers();

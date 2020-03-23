@@ -8,12 +8,14 @@ class Person {
         return `${this.name} ${this.surname.toUpperCase()}`;
     }
 
-    displayI(){
+    displayInitials(){
         return `${this.name.charAt(0).toUpperCase()}.${this.surname.charAt(0).toUpperCase()}`
     }
 }
 
-const nowak = new Person('Jan', 'Nowak');
-const me = new Person('Sebastian', 'Rajca');
-console.log(me.displayFullName());
-console.log(me.displayI());
+const first = new Person('Jan', 'Nowak');
+const second = new Person('XXX', 'XXX');
+console.log(first.displayFullName());
+console.log(first.displayInitials());
+console.log(second.displayFullName());
+console.log(second.displayInitials());

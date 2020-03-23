@@ -14,7 +14,7 @@ ${zip} ${city}
 ${country}
 `);
 
-/* 
+/*
 dr Mateusz Kubicki
 ul. Długa 15
 30-781 Kraków
