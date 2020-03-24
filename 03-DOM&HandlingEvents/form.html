@@ -9,9 +9,9 @@
 <body>
 	<h1>Filling in a form</h1>
 	<form>
-		<p>University:<br><input type="text"></p>
-		<p>Address:<br><input type="text"></p>
-		<button type="button">Hint</button>
+		<p>University:<br><input type="text" id="universityInput"></p>
+		<p>Address:<br><input type="text" id="addressInput"></p>
+		<button type="button" onclick=fillForm()>Hint</button>
 	</form>
 
 	<script>
@@ -19,6 +19,10 @@
 		var university = "Cracow University of Economics";
 		var address = "Rakowicka 27, Krakow, POLAND";
 
+		const fillForm = () => {
+			document.getElementById("universityInput").value = university;
+			document.getElementById("addressInput").value = address;
+		}
 	</script>
 </body>
 
