@@ -4,23 +4,38 @@
 <head>
     <title>Shopping List</title>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Shopping List</h1>
     <p>
-        New item: <input type="text" name="item">
-        <button type="button">Add</button>
+        New item: <input id="itemName" type="text" name="item">
+        <button onclick=addItemToList() type="button">Add</button>
     </p>
     <h3>List of items</h3>
-    <ol>
+    <ol ondblclick="removeItemFromList()" id="shoppingList">
         <li>cooking oil</li>
         <li>breakfast cereal</li>
         <li>bread</li>
     </ol>
 
     <script>
-    	// a JavaScript code here ...
+        const addItemToList = () => {
+            let itemName = document.getElementById("itemName").value;
+            var node = document.createElement("li");
+            var textnode = document.createTextNode(itemName);
+            node.appendChild(textnode);
+            document.getElementById("shoppingList").appendChild(node);
+        }
+
+        const removeItemFromList = () => {
+            $("ol").on("dblclick", "li", function () {
+                $(this).remove();
+            });
+        }
+
 
     </script>
 </body>
