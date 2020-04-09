@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chart</title>
+    <!-- Step 1) Load D3.js -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <!-- Step 2) Load billboard.js with style -->
+    <script src="https://naver.github.io/billboard.js/release/latest/dist/billboard.js"></script>
+
+    <!-- Load with base style -->
+    <link rel="stylesheet" href="https://naver.github.io/billboard.js/release/latest/dist/billboard.css">
+
+
+</head>
+
+<body>
+<h1>Chart</h1>
+<div id="chart"></div>
+<script>
+    (function () {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            display(this);
+        };
+        xhr.open('GET', 'http://api.nbp.pl/api/cenyzlota/last/10');
+        xhr.send();
+
+        function display(request) {
+            if (request.status === 200 && request.readyState === 4) {
+                const gold = JSON.parse(request.response);
+                let goldPrices = [];
+                gold.forEach(g => goldPrices.push(g.cena));
+
+                var chart = bb.generate({
+                    bindto: "#chart",
+                    data: {
+                        type: "bar",
+                        columns: [
+                            ["Gold price last 10 days",
+                                goldPrices[0], // hax, array not working
+                                goldPrices[1],
+                                goldPrices[2],
+                                goldPrices[3],
+                                goldPrices[4],
+                                goldPrices[5],
+                                goldPrices[6],
+                                goldPrices[7],
+                                goldPrices[8],
+                                goldPrices[9],
+                            ]
+                        ]
+                    }
+                });
+
+            }
+        }
+    })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatables framework</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+<h1>Datatable</h1>
+<table id="datatable"></table>
+<script>
+    (function () {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            display(this);
+        };
+        xhr.open('GET', 'https://gist.githubusercontent.com/cerbin1/f93c31d7657212f01fe420fbad58a92e/raw/4f519240ba87375470e8c64583cf107c9402b5ca/gistfile1.txt');
+        xhr.send();
+
+        function display(request) {
+            if (request.status === 200 && request.readyState === 4) {
+                const persons = JSON.parse(request.response);
+                $('#datatable').DataTable({
+                    data: persons,
+                    columns: [
+                        {data: 'name'},
+                        {data: 'surname'},
+                        {data: 'email'},
+                        {data: 'age'},
+                        {data: 'country'},
+                    ]
+                });
+            }
+        }
+    })();
+</script>
+</body>
+
+</html>
