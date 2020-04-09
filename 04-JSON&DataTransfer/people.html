@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>People</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>People</h1>
+<input type="button" value="Display people data" onclick="displayPeopleData()">
+<ol id="peopleData">
+
+</ol>
+<script>
+    function displayPeopleData() {
+        const method = 'GET';
+        const URL = 'https://gist.githubusercontent.com/cerbin1/f93c31d7657212f01fe420fbad58a92e/raw/4f519240ba87375470e8c64583cf107c9402b5ca/gistfile1.txt';
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            display(this);
+        };
+        xhr.open(method, URL);
+        xhr.send();
+    }
+
+    function display(request) {
+        if (request.status === 200 && request.readyState === 4) {
+            const persons = JSON.parse(request.response);
+            const list = document.getElementById("peopleData");
+
+            persons.forEach(person => {
+                let listElement = document.createElement("li");
+                listElement.appendChild(document.createTextNode(person.name + " " + person.surname.toUpperCase() + ", " + person.country))
+                list.appendChild(listElement);
+            })
+        }
+    }
+</script>
+
+</body>
+</html>

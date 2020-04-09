@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Student</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>Student</h1>
-		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
-		<p id="personalData"></p>
+<head>
+    <title>Student</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Student</h1>
+<input type="button" value="Display student's data" onclick="displayStudentsData()">
+<p id="personalData"></p>
+<script>
 
-		<script>
+    function displayStudentsData() {
 
-		</script>
+        const method = 'GET';
+        const URL = 'https://gist.githubusercontent.com/cerbin1/e07b063aa79665772c7873948c1144ec/raw/a60583015ed8be46e21c5622006d109a71c46676/gistfile1.txt';
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            display(this);
+        };
+        xhr.open(method, URL);
+        xhr.send();
+    }
 
-	</body>
+    function display(request) {
+        if (request.status === 200 && request.readyState === 4) {
+            const student = JSON.parse(request.response);
+            document.getElementById('personalData').innerHTML =
+                "Name: " +
+                student.name +
+                ", surname: " +
+                student.surname;
+        }
+    }
+</script>
+</body>
 </html>

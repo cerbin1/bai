@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency rates</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Currency rates</h1>
+<input type="button" value="Display student's data" onclick="asd()">
+<p id="exchangeRates"></p>
+<script>
+    const currencies = [
+        {URL: 'http://api.nbp.pl/api/exchangerates/rates/a/EUR'},
+        {URL: 'http://api.nbp.pl/api/exchangerates/rates/a/USD'},
+        {URL: 'http://api.nbp.pl/api/exchangerates/rates/a/GBP'}
+    ];
+
+    function asd() {
+
+        currencies.forEach(currency => {
+            displayExchangeRates(currency)
+        })
+    }
+
+    function displayExchangeRates(currency) {
+        document.getElementById('exchangeRates').innerHTML = '';
+        const method = 'GET';
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            display(this);
+        };
+        xhr.open(method, currency.URL);
+        xhr.send();
+    }
+
+    function display(request) {
+        if (request.status === 200 && request.readyState === 4) {
+            const currencyRate = JSON.parse(request.response);
+            document.getElementById('exchangeRates').innerHTML +=
+                "Currency code: " +
+                currencyRate.code +
+                ", surname: " +
+                currencyRate.rates[0].mid +
+                "<br>";
+        }
+    }
+</script>
+</body>
+</html>
