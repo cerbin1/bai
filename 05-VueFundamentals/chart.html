@@ -2,36 +2,55 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 </head>
 <body>
-  <script>
+<canvas id="myChart"></canvas>
+<script>
     var app = new Vue({
-      el: '#app',
-      data: {
-        films: [
-          {
-            language: 'Python',
-            popularity: 25.95
-          },
-          {
-            language: 'Java',
-            popularity: 21.42
-          },
-          {
-            language: 'JavaScript',
-            popularity: 8.26
-          },
-          {
-            language: 'C#',
-            popularity: 7.62
-          },
-          {
-            language: 'Php',
-            popularity: 7.37
-          }
-        ] 
-      }
+        el: '#myChart',
+        data: {
+            films: [
+                {
+                    language: 'Python',
+                    popularity: 25.95
+                },
+                {
+                    language: 'Java',
+                    popularity: 21.42
+                },
+                {
+                    language: 'JavaScript',
+                    popularity: 8.26
+                },
+                {
+                    language: 'C#',
+                    popularity: 7.62
+                },
+                {
+                    language: 'Php',
+                    popularity: 7.37
+                }
+            ]
+        },
+        mounted() {
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let chart = new Chart(ctx, {
+                type: 'bar',
+
+                data: {
+                    labels: this.films.map((obj) => obj.language),
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: this.films.map((obj) => obj.popularity)
+                    }]
+                },
+            });
+        }
     });
-  </script>
+</script>
 </body>
 </html>

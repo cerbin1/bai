@@ -4,7 +4,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>Grades</h1>    
+  <h1>Grades</h1>
+  <div id="app">
+      <p>RECEIPT</p>
+      <p>----------------------</p>
+      <p>Product: {{ product.name }}</p>
+      <p>Unit Price: {{ product.unitPrice }} zl</p>
+      <p>Quantity: {{ product.quantity }}</p>
+      <p>Amount: {{ product.quantity * product.unitPrice }}</p>
+      <p>VAT Tax Rate: {{ product.VAT }}</p>
+      <p>=============</p>
+      <b>Total: {{ (product.unitPrice * product.quantity) * (100 + product.VAT) / 100}} zl</b>
+  </div>
 
   <script>
     var app = new Vue({
@@ -12,7 +23,7 @@
       data: {
         product: {
           name: 'book',
-          unitPrice: 17.5,
+          unitPrice: 17,
           quantity: 3,
           VAT: 23
         }
