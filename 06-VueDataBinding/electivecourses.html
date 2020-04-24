@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+        <label>
+            Angielski
+            <input type="checkbox" value="Angielski" v-model="checkedCourses">
+        </label><br>
+        <label>
+            Hiszpanski
+            <input type="checkbox" value="Hiszpanski" v-model="checkedCourses">
+        </label><br>
+        <label>
+            Wloski
+            <input type="checkbox" value="Wloski" v-model="checkedCourses">
+        </label><br>
+        <label>
+            Chinski
+            <input type="checkbox" value="Chinski" v-model="checkedCourses">
+        </label><br>
+        <label>
+            Niemiecki
+            <input type="checkbox" value="Niemiecki" v-model="checkedCourses">
+        </label>
+
+
+        <p>Liczba wybranych kursow: {{ countNumberOfCourses }}</p>
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            checkedCourses: [],
+        },
+        computed: {
+            countNumberOfCourses() {
+                return this.checkedCourses.length;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <form v-on:submit="submitData">
+
+        <label>Imie:
+            <input type="text" v-model="cv.name">
+        </label> <br>
+        Nazwisko
+        <label>
+            <input type="text" v-model="cv.surname">
+        </label><br>
+        Wiek
+        <label>
+            <input type="text" v-model.number="cv.age">
+        </label><br>
+
+        <label>Plec <br>
+            Mezczyzna <input type="radio" v-model="cv.gender" name="gender" value="man">
+            Kobieta <input type="radio" v-model="cv.gender" name="gender" value="woman">
+        </label><br>
+
+
+        <label>Wyksztalcenie
+            <select v-model="cv.school">
+                <option value="null">Brak</option>
+                <option value="basic">Podstawowe</option>
+                <option value="secondary">Srednie</option>
+                <option value="higher">Wyzsze</option>
+            </select>
+        </label>
+
+        <br>
+        <label>
+            Obsluga komputera
+            <input type="checkbox" value="pc" v-model="cv.skills">
+        </label><br>
+        <label>
+            Prawo jazdy
+            <input type="checkbox" value="driverLicense" v-model="cv.skills">
+        </label><br>
+        <label>
+            Kreatywnosc
+            <input type="checkbox" value="creativity" v-model="cv.skills">
+        </label><br>
+        <label>
+            Praca w zespole
+            <input type="checkbox" value="teamwork" v-model="cv.skills">
+        </label><br>
+
+        <button type="submit">Wyslij dane</button>
+        <button v-on:click="saveToLocalStorage">Zapisz</button>
+        <button v-on:click="getFromLocalStorage">Odczytaj</button>
+        <!--        <div>
+                    <br>
+                    <button v-on:click="show">Show data</button>
+                </div>-->
+    </form>
+</div>
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            availableGender: ['man', 'woman'],
+            availableSchools: ['man', 'woman'],
+            cv: {
+                name: '',
+                surname: '',
+                age: '',
+                gender: '',
+                school: '',
+                skills: [],
+            }
+        },
+        methods: {
+            submitData(event) {
+                event.preventDefault();
+                console.log('CV');
+                console.log('Imie: ' + this.cv.name);
+                console.log('Nazwisko: ' + this.cv.surname);
+                console.log('Wiek: ' + this.cv.age);
+                console.log('Plec: ' + this.cv.gender);
+                console.log('Wyksztalcenie: ' + this.cv.school);
+                console.log('Umiejetnosci: ' + this.cv.skills);
+            },
+            saveToLocalStorage(event) {
+                event.preventDefault();
+                localStorage.setItem('cv', JSON.stringify(this.cv));
+            },
+            getFromLocalStorage(event) {
+                event.preventDefault();
+                console.log("cv: " + localStorage.getItem('cv'))
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
