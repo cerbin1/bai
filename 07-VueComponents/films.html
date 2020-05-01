@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+    <film1></film1>
+    <film2></film2>
+    <film3></film3>
+</div>
+
+<script>
+    Vue.component('film1', {
+        data: function () {
+            return {
+                title: 'Drive',
+                info: '2011 Nicolas Winding Refn'
+            }
+        },
+        template: '<div><p>title: {{title}}</p><p>{{info}}</p></div>'
+    });
+    Vue.component('film2', {
+        data: function () {
+            return {
+                title: 'Fight Club',
+                info: '1999 David Fincher'
+            }
+        },
+        template: '<div><p>title: {{title}}</p><p>{{info}}</p></div>'
+    });
+    Vue.component('film3', {
+        data: function () {
+            return {
+                title: 'Midsommar',
+                info: '2019 Ari Aster'
+            }
+        },
+        template: '<div><p>title: {{title}}</p><p>{{info}}</p></div>'
+    });
+
+
+    new Vue({el: '#app'})
+</script>
+</body>
+</html>

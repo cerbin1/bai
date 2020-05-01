@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id=app>
+    <api></api>
+</div>
+<script>
+    Vue.component('api', {
+        props: {
+            bitcoinDominance: '',
+            cryptoNumber: ''
+        },
+        mounted() {
+            fetch('https://api.coinpaprika.com/v1/global')
+                .then(response => response.json())
+                .then(data => {
+                    this.bitcoinDominance = data.bitcoin_dominance_percentage,
+                        this.cryptoNumber = data.cryptocurrencies_number
+                });
+        },
+
+        template: '<div><h3>Use of coin paprika api</h3><p>Bitcoin percentage dominance: {{bitcoinDominance}}% </p><p>Number of cryptocurrencies: {{cryptoNumber}}</p></div>',
+    });
+
+    new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+
+</html>

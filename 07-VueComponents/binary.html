@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id=app>
+        <decimal-to-binary-converter :number="8"></decimal-to-binary-converter>
+        <decimal-to-binary-converter :number="170"></decimal-to-binary-converter>
+        <decimal-to-binary-converter :number="204"></decimal-to-binary-converter>
+        <decimal-to-binary-converter :number="3855"></decimal-to-binary-converter>
+    </div>
+
+<script>
+    Vue.component('decimal-to-binary-converter', {
+        props: {
+            number: {
+                type: Number,
+            }
+        },
+        computed: {
+            convertToBinary: function () {
+                return this.number.toString(2);
+            }
+        },
+
+        template: '<h3>{{number}}(10) = {{convertToBinary}}(2)</h3>',
+    });
+
+    new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+
+</html>
